@@ -17,7 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/events", require("./routes/eventRoutes"));
-app.use("/api/register", require("./routes/registrationRoutes"));
+app.use("/api", require("./routes/registrationRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 
 // Root test route (VERY IMPORTANT for Render)
