@@ -1,31 +1,37 @@
 import axios from "axios";
 
+// Base API instance
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: `${import.meta.env.VITE_API_URL}/api`,
 });
 
-// 🔐 Attach JWT
+// 🔐 Attach JWT token automatically
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
-  if (token) req.headers.Authorization = token;
+  if (token) {
+    req.headers.Authorization = token;
+  }
   return req;
 });
 
-// PUBLIC
+// =======================
+// PUBLIC APIs
+// =======================
 export const getEvents = () => API.get("/events");
 export const getEventById = (id) => API.get(`/events/${id}`);
 export const registerUser = (data) => API.post("/register", data);
 
-// ADMIN
-export const addEvent = (data) => {
-  return API.post("/events", {
+// =======================
+// ADMIN APIs
+// =======================
+export const addEvent = (data) =>
+  API.post("/events", {
     title: data.title,
     description: data.description,
     date: new Date(data.date), // YYYY-MM-DD ✅
     time: data.time,           // HH:mm string ✅
     location: data.location,
   });
-};
 
 export const getRegistrations = (eventId) =>
   API.get(`/registrations/${eventId}`);
@@ -37,5 +43,8 @@ export const exportRegistrationsCSV = (eventId) =>
   API.get(`/registrations/export/${eventId}`, {
     responseType: "blob",
   });
-  export const deleteEvent = (id) => API.delete(`/events/${id}`);
 
+export const deleteEvent = (id) =>
+  API.delete(`/events/${id}`);
+
+export default API;
