@@ -67,7 +67,7 @@ event-registration-system/
 
 ### 1️⃣ Clone Repository
 ```bash
-git clone https://github.com/your-username/event-registration-system.git
+git clone https://github.com/NikhilGowda03/Event_Registration_System
 cd event-registration-system
 
 
