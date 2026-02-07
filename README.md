@@ -1,16 +1,115 @@
-# React + Vite
+# Event Registration System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack Event Registration System built as part of a technical assignment.  
+The application allows users to view events and register, while admins can securely manage events and registrations.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🔧 Tech Stack
 
-## React Compiler
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- React Router
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Backend
+- Node.js
+- Express.js
+- MongoDB (Atlas)
+- JWT Authentication
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## ✨ Features
+
+### User Features
+- View list of events
+- View event details (date, time, location)
+- Register for an event
+- Form validation (name, email, phone)
+
+### Admin Features
+- Secure admin login (JWT)
+- Add new events (date & time support)
+- View all events
+- Delete events
+- View registrations per event
+- Delete registrations
+- Export registrations as CSV
+
+---
+
+## 📁 Project Structure
+event-registration-system/
+│
+├── backend/
+│ ├── controllers/
+│ ├── models/
+│ ├── routes/
+│ ├── middleware/
+│ ├── server.js
+│ └── .env
+│
+├── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── services/
+│ │ ├── App.jsx
+│ │ └── main.jsx
+│ └── index.html
+│
+└── README.md 
+
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/your-username/event-registration-system.git
+cd event-registration-system
+
+
+2️⃣ Backend Setup
+cd backend
+npm install
+
+Create .env file:
+
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+
+Run backend: npm run dev
+
+3️⃣ Frontend Setup
+cd frontend
+npm install
+npm run dev
+
+Frontend runs on: http://localhost:5173
+
+Backend runs on:http://localhost:5000
+
+🔐 Admin Access
+
+Admin authentication uses JWT.
+
+Admin users are stored in MongoDB
+
+Token is stored in browser localStorage
+
+Admin routes are protected using middleware
+
+📌 Notes
+
+No business logic was altered for UI enhancements
+
+Tailwind CSS used strictly for styling
+
+Designed to reflect real-world internal admin tools
+
+🧑‍💻 Author
+
+Nikhil Gowda S
