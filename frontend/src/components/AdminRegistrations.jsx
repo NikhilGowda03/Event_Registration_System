@@ -28,26 +28,14 @@ export default function AdminRegistrations() {
       setLoading(false);
     }
   };
+  //download csv
+const downloadCSV = () => {
+  if (!selectedEvent) return alert("Select an event");
 
-  // 🔹 Download CSV
-  const downloadCSV = async () => {
-    if (!selectedEvent) return alert("Select an event");
-
-    try {
-      const res = await API.get(
-        `/registrations/export/${selectedEvent}`,
-        { responseType: "blob" }
-      );
-
-      const url = window.URL.createObjectURL(new Blob([res.data]));
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "registrations.csv";
-      a.click();
-    } catch (err) {
-      alert("Failed to download CSV");
-    }
-  };
+  // direct browser download (bypasses blockers)
+  window.location.href =
+    `${import.meta.env.VITE_API_URL}/api/registrations/export/${selectedEvent}`;
+};
 
   // 🔹 Delete registration
   const deleteRegistration = async (id) => {
