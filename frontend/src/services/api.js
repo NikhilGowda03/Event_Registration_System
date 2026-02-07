@@ -9,7 +9,7 @@ const API = axios.create({
 API.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
   if (token) {
-    req.headers.Authorization = token;
+    req.headers.Authorization = `Bearer ${token}`;
   }
   return req;
 });
@@ -28,8 +28,8 @@ export const addEvent = (data) =>
   API.post("/events", {
     title: data.title,
     description: data.description,
-    date: new Date(data.date), // YYYY-MM-DD ✅
-    time: data.time,           // HH:mm string ✅
+    date: new Date(data.date),
+    time: data.time,
     location: data.location,
   });
 
