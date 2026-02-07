@@ -32,10 +32,10 @@ export default function AdminRegistrations() {
 const downloadCSV = () => {
   if (!selectedEvent) return alert("Select an event");
 
-  // direct browser download (bypasses blockers)
-  window.location.href =
-    `${import.meta.env.VITE_API_URL}/api/registrations/export/${selectedEvent}`;
+  const url = `${import.meta.env.VITE_API_URL}/api/registrations/export/${selectedEvent}`;
+  window.open(url, "_blank");
 };
+
 
   // 🔹 Delete registration
   const deleteRegistration = async (id) => {
